@@ -38,17 +38,3 @@ Klon repositori ini ke dalam direktori lokal, lalu jalankan perintah berikut di 
 docker compose up -d --build
 docker compose up airflow-init
 ```
-
-### Struktur Repositori
-├── dags/
-│   ├── airflow_dag.py        # Konfigurasi topologi Airflow
-│   ├── generator.py          # Skrip ekstraksi data log sensor
-│   ├── spark_etl.py          # Logika transformasi PySpark
-│   └── load_to_bigquery.py   # Skrip operasi muat data ke GCP
-├── docker-compose.yaml       # Konfigurasi container infrastruktur
-├── Dockerfile                # Definisi image Python kustom
-└── README.md                 # Dokumentasi proyek
-
-Kontak Pengembang
-Arinugraha Syam
-Data & Instrumentation Engineering
