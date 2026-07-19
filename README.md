@@ -37,7 +37,9 @@ Klon repositori ini ke dalam direktori lokal, lalu jalankan perintah berikut di 
 ```bash
 docker compose up -d --build
 docker compose up airflow-init
+```
 
+### Struktur Repositori
 ├── dags/
 │   ├── airflow_dag.py        # Konfigurasi topologi Airflow
 │   ├── generator.py          # Skrip ekstraksi data log sensor
