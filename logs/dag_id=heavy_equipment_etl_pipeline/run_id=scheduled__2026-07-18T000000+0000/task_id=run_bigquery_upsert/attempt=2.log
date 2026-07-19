@@ -1,0 +1,74 @@
+[2026-07-19T05:27:46.548+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-07-19T05:27:46.563+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: heavy_equipment_etl_pipeline.run_bigquery_upsert scheduled__2026-07-18T00:00:00+00:00 [queued]>
+[2026-07-19T05:27:46.569+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: heavy_equipment_etl_pipeline.run_bigquery_upsert scheduled__2026-07-18T00:00:00+00:00 [queued]>
+[2026-07-19T05:27:46.570+0000] {taskinstance.py:2303} INFO - Starting attempt 2 of 2
+[2026-07-19T05:27:46.582+0000] {taskinstance.py:2327} INFO - Executing <Task(BashOperator): run_bigquery_upsert> on 2026-07-18 00:00:00+00:00
+[2026-07-19T05:27:46.589+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=473) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-07-19T05:27:46.592+0000] {standard_task_runner.py:63} INFO - Started process 475 to run task
+[2026-07-19T05:27:46.590+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'heavy_equipment_etl_pipeline', 'run_bigquery_upsert', 'scheduled__2026-07-18T00:00:00+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/***_dag.py', '--cfg-path', '/tmp/tmpr_2y0hhy']
+[2026-07-19T05:27:46.593+0000] {standard_task_runner.py:91} INFO - Job 24: Subtask run_bigquery_upsert
+[2026-07-19T05:27:46.651+0000] {task_command.py:426} INFO - Running <TaskInstance: heavy_equipment_etl_pipeline.run_bigquery_upsert scheduled__2026-07-18T00:00:00+00:00 [running]> on host 02756af3b5fc
+[2026-07-19T05:27:46.714+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='heavy_equipment_etl_pipeline' AIRFLOW_CTX_TASK_ID='run_bigquery_upsert' AIRFLOW_CTX_EXECUTION_DATE='2026-07-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-07-18T00:00:00+00:00'
+[2026-07-19T05:27:46.717+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-07-19T05:27:46.718+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-07-19T05:27:46.720+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/dags && python load_to_bigquery.py']
+[2026-07-19T05:27:46.729+0000] {subprocess.py:86} INFO - Output:
+[2026-07-19T05:27:47.844+0000] {subprocess.py:93} INFO - /home/***/.local/lib/python3.12/site-packages/google/cloud/bigquery/_pandas_helpers.py:537: UserWarning: Pyarrow could not determine the type of columns: time_window.
+[2026-07-19T05:27:47.845+0000] {subprocess.py:93} INFO -   warnings.warn(
+[2026-07-19T05:27:52.701+0000] {subprocess.py:93} INFO - Mengekstrak data terkompresi dari data_lake/curated/equipment_features...
+[2026-07-19T05:27:52.702+0000] {subprocess.py:93} INFO - Memuat 216 baris data ke staging table sementara...
+[2026-07-19T05:27:52.703+0000] {subprocess.py:93} INFO - Data berhasil dimuat ke staging table.
+[2026-07-19T05:27:52.704+0000] {subprocess.py:93} INFO - Mengeksekusi proses MERGE (Upsert) ke tabel operasional utama...
+[2026-07-19T05:27:52.704+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-07-19T05:27:52.705+0000] {subprocess.py:93} INFO -   File "/opt/***/dags/load_to_bigquery.py", line 58, in <module>
+[2026-07-19T05:27:52.706+0000] {subprocess.py:93} INFO -     load_and_upsert_bigquery()
+[2026-07-19T05:27:52.706+0000] {subprocess.py:93} INFO -   File "/opt/***/dags/load_to_bigquery.py", line 51, in load_and_upsert_bigquery
+[2026-07-19T05:27:52.708+0000] {subprocess.py:93} INFO -     query_job.result() # Menunggu proses kueri selesai
+[2026-07-19T05:27:52.708+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^
+[2026-07-19T05:27:52.709+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/query.py", line 1590, in result
+[2026-07-19T05:27:52.709+0000] {subprocess.py:93} INFO -     do_get_result()
+[2026-07-19T05:27:52.710+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 293, in retry_wrapped_func
+[2026-07-19T05:27:52.711+0000] {subprocess.py:93} INFO -     return retry_target(
+[2026-07-19T05:27:52.711+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^
+[2026-07-19T05:27:52.712+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 153, in retry_target
+[2026-07-19T05:27:52.713+0000] {subprocess.py:93} INFO -     _retry_error_helper(
+[2026-07-19T05:27:52.713+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 212, in _retry_error_helper
+[2026-07-19T05:27:52.714+0000] {subprocess.py:93} INFO -     raise final_exc from source_exc
+[2026-07-19T05:27:52.714+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 144, in retry_target
+[2026-07-19T05:27:52.715+0000] {subprocess.py:93} INFO -     result = target()
+[2026-07-19T05:27:52.715+0000] {subprocess.py:93} INFO -              ^^^^^^^^
+[2026-07-19T05:27:52.716+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/query.py", line 1579, in do_get_result
+[2026-07-19T05:27:52.717+0000] {subprocess.py:93} INFO -     super(QueryJob, self).result(retry=retry, timeout=timeout)
+[2026-07-19T05:27:52.717+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 971, in result
+[2026-07-19T05:27:52.717+0000] {subprocess.py:93} INFO -     return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+[2026-07-19T05:27:52.718+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-07-19T05:27:52.719+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/google/api_core/future/polling.py", line 261, in result
+[2026-07-19T05:27:52.720+0000] {subprocess.py:93} INFO -     raise self._exception
+[2026-07-19T05:27:52.720+0000] {subprocess.py:93} INFO - google.api_core.exceptions.NotFound: 404 Not found: Table heavy-equipment-pipeline:heavy_equipment_dwh.sensor_features was not found in location asia-southeast2; reason: notFound, message: Not found: Table heavy-equipment-pipeline:heavy_equipment_dwh.sensor_features was not found in location asia-southeast2
+[2026-07-19T05:27:52.721+0000] {subprocess.py:93} INFO - 
+[2026-07-19T05:27:52.722+0000] {subprocess.py:93} INFO - Location: asia-southeast2
+[2026-07-19T05:27:52.722+0000] {subprocess.py:93} INFO - Job ID: bda10dec-73ef-46c8-aee0-9117e066628b
+[2026-07-19T05:27:52.723+0000] {subprocess.py:93} INFO - 
+[2026-07-19T05:27:52.809+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-07-19T05:27:52.812+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-07-19T05:27:52.820+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-07-19T05:27:52.824+0000] {taskinstance.py:1205} INFO - Marking task as FAILED. dag_id=heavy_equipment_etl_pipeline, task_id=run_bigquery_upsert, execution_date=20260718T000000, start_date=20260719T052746, end_date=20260719T052752
+[2026-07-19T05:27:52.838+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 24 for task run_bigquery_upsert (Bash command failed. The command returned a non-zero exit code 1.; 475)
+[2026-07-19T05:27:52.876+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-07-19T05:27:52.890+0000] {taskinstance.py:3482} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-07-19T05:27:52.894+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
